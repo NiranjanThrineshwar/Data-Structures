@@ -53,3 +53,42 @@ firstStack.size();
 firstStack.pop();
 firstStack.size();
 firstStack.topElement();
+
+
+// Minimum value in a stack
+
+function minStack() {
+  this.storage = [];
+  this.minStack = [];
+  this.count = 0;
+}
+
+minStack.prototype.push = function (val) {
+  this.storage.push(val);
+  return this.storage;
+}
+
+minStack.prototype.pop = function () {
+  if (this.storage) {
+    return this.storage.pop();
+  } else {
+    return "Stack is empty";
+  }
+}
+
+minStack.prototype.min = function (val) {
+  if (this.storage) {
+    const copy = this.storage.slice(0);
+    this.minStack = copy.sort((a, b) => a - b);
+  } else {
+    return "Stack is empty";
+  }
+  console.log(this.minStack);
+}
+
+let firstStack = new minStack();
+firstStack.push(2)
+firstStack.push(4)
+firstStack.push(-1)
+
+firstStack.min()
